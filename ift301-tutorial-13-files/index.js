@@ -24,10 +24,10 @@ function formatPhoneNumber(phone){
   let formattedPhone = '';
 
   if (tmpPhone.length < 4) {
-    formattedPhone = '(' + tmpPhone.substring(0, 3);
+    formattedPhone = '(' + tmpPhone.substr(0, 3);
   }
-  else if (tmpPhone.length < 7) formattedPhone = '(' + tmpPhone.substring(0, 3) + ') ' + tmpPhone.substring(3, 3);
-  else if (tmpPhone.length  < 11) formattedPhone = '(' + tmpPhone.substring(0, 3) + ') ' + tmpPhone.substring(3, 3) + '-' + tmpPhone.substring(6, 4);
+  else if (tmpPhone.length < 7) formattedPhone = '(' + tmpPhone.substr(0, 3) + ') ' + tmpPhone.substr(3, 3);
+  else if (tmpPhone.length  < 11) formattedPhone = '(' + tmpPhone.substr(0, 3) + ') ' + tmpPhone.substr(3, 3) + '-' + tmpPhone.substr(6, 4);
 
   document.getElementById('contactPhone').value = formattedPhone;
 }
