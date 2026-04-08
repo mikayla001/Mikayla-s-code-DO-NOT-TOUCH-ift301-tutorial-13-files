@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>IFT Job Fair Registration</title>
+		<link rel="stylesheet" href="layout.css">
+		<link rel="stylesheet" href="styles.css">
+		<script src="index.js" defer></script>
+	</head>
+	<body>
+		<header>
+			<input type="checkbox" id="menuCheck">
+			<label id="menuIcon" for="menuCheck">
+				<img class="menu-bars" src="menuBars.jpg">
+				<img class="close-icon" src="closeIcon.jpg">
+			</label>
+			<img src="banner.jpg" alt="IFT Program Alumni">
+			<nav>
+				<a href="#">Home</a>
+				<a href="#">Students</a>
+				<a href="#">Exhibitors</a>
+				<a href="#" class="active">Registration</a>
+				<a href="#">IFT Program Information</a>
+			</nav>
+		</header>
+		<section>
+			<p>The Arizona State University Information Technology (IFT) Program is thrilled to invite you to showcase your organization's opportunities and connect with our talented students at our upcoming event. This is a prime opportunity for your company to engage with the brightest minds in the field of information technology, as our program at ASU has a reputation for producing skilled and innovative professionals. To secure your spot as an exhibitor, please complete the registration form below. Thank you for your participation in making this event a success, and we look forward to welcoming you to the ASU IFT Program Job Fair!</p>
+		</section>
+		<section>
+			<form method="post" action="https://iftweb.eng.asu.edu/ift301/tutorials/13/submit.php" id="registration">
+				<fieldset id="companyInformation">
+					<legend>Company Information (required)</legend>
+					<div class="form-row">
+						<label>Company Name</label>
+						<div class="input-container">
+							<input type="text" name="company_name" id="companyName" placeholder="Company Name" />
+							<small class="error" id="companyNameError">&nbsp;</small>
+						</div>
+					</div>
+					<div class="form-row">
+						<label>Contact Person (Full Name)</label>
+						<div class="input-container">
+							<input type="text" name="contact_person" id="contactPerson" placeholder="Full Name" />
+							<small class="error" id="contactPersonError">&nbsp;</small>
+						</div>
+					</div>
+					<div class="form-row">
+						<label>Contact Email</label>
+						<div class="input-container">
+							<input type="text" inputmode="email" name="contact_email" id="contactEmail" placeholder="email@example.com" />
+							<small class="error" id="contactEmailError">&nbsp;</small>
+						</div>
+					</div>
+					<div class="form-row">
+						<label>Contact Phone</label>
+						<div class="input-container">
+							<input type="text" inputmode="numeric" name="contact_phone" id="contactPhone" placeholder="(###) ###-####" />
+							<small class="error" id="contactPhoneError">&nbsp;</small>
+						</div>
+					</div>
+					<div class="form-row">
+						<label>Street Address</label>
+						<div class="input-container">
+							<input type="text" name="street_address" id="streetAddress" placeholder="1234 Main Street" />
+							<small class="error" id="streetAddressError">&nbsp;</small>
+						</div>
+					</div>
+					<div class="form-row" style="margin-bottom: 2em;">
+						<label>Street Address 2</label>
+						<div class="input-container">
+							<input type="text" name="street_address_2" id="streetAddress2" placeholder="Suite 100" />
+						</div>
+					</div>
+					<div class="form-row" style="margin-bottom: 0;">
+						<label>City</label>
+						<input type="text" name="city" id="city" placeholder="City" />
+						<label for="state">State</label>
+						<input type="text" name="state" id="state" list="stateList" placeholder="AZ" />
+						<datalist id="stateList">
+						   <option value="AL" />
+						   <option value="AK" />
+						   <option value="AZ" />
+						   <option value="AR" />
+						   <option value="CA" />
+						   <option value="CO" />
+						   <option value="CT" />
+						   <option value="DE" />
+						   <option value="FL" />
+						   <option value="GA" />
+						   <option value="HI" />
+						   <option value="ID" />
+						   <option value="IL" />
+						   <option value="IN" />
+						   <option value="IA" />
+						   <option value="KS" />
+						   <option value="KY" />
+						   <option value="LA" />
+						   <option value="ME" />
+						   <option value="MD" />
+						   <option value="MA" />
+						   <option value="MI" />
+						   <option value="MN" />
+						   <option value="MS" />
+						   <option value="MO" />
+						   <option value="MT" />
+						   <option value="NE" />
+						   <option value="NV" />
+						   <option value="NH" />
+						   <option value="NJ" />
+						   <option value="NM" />
+						   <option value="NY" />
+						   <option value="NC" />
+						   <option value="ND" />
+						   <option value="OH" />
+						   <option value="OK" />
+						   <option value="OR" />
+						   <option value="PA" />
+						   <option value="RI" />
+						   <option value="SC" />
+						   <option value="SD" />
+						   <option value="TN" />
+						   <option value="TX" />
+						   <option value="UT" />
+						   <option value="VT" />
+						   <option value="VA" />
+						   <option value="WA" />
+						   <option value="WV" />
+						   <option value="WI" />
+						   <option value="WY" />
+						</datalist>
+						<label for="zip">ZIP / Postal Code</label>
+						<input type="text" inputmode="numeric" name="zip" id="zip" placeholder="#####" />
+					</div>
+					<small class="error" id="cityStateZipError">&nbsp;</small>
+				</fieldset>
+				<fieldset id="packageInformation">
+					<legend>Exhibitor Package</legend>
+					<div id="packageContainer">
+						<label class="packageLabel">
+							<input type="radio" name="package" value="maroon" />
+							<span><strong>Maroon Exhibitor Package - $500</strong><br><br>Offers essential exposure for your organization. With a booth space in the general exhibition area, you'll have the opportunity to connect with students and showcase your company's offerings. This package includes standard booth setup, company listing in the event program, and two complimentary registrations for your representatives.</span>
+						</label>
+						<label class="packageLabel">
+							<input type="radio" name="package" value="gold" />
+							<span><strong>Gold Exhibitor Package - $1,000</strong><br><br>Designed to maximize your visibility and engagement, this package includes a prime location for your booth, enhanced signage, and a dedicated promotional feature in our event program. Additionally, you'll receive four complimentary registrations, allowing more of your team to actively participate and network with potential candidates.</span>
+						</label>
+						<label class="packageLabel">
+							<input type="radio" name="package" value="sparky" />
+							<span><strong>Sparky Exhibitor Package - $2,500</strong><br><br>Offering a premium booth location with optimal foot traffic, exclusive branding opportunities, and a dedicated session slot to present your company to attendees, this comprehensive package includes prominent logo placement in promotional materials, five complimentary registrations, and priority consideration for interview space following the event.</span>
+						</label>
+						<label class="packageLabel">
+							<input type="radio" name="package" value="sun_devil" />
+							<span><strong>Sun Devil Exhibitor Package - $5,000</strong><br><br>The Sun Devil Exhibitor Package is our most exclusive offering, providing unparalleled exposure and access to the best talents in the ASU IFT Program. This package includes a premium double booth space, exclusive sponsorship recognition, a featured speaking slot during the main event, and a full-page advertisement in the event program. With six complimentary registrations, your team can fully capitalize on networking opportunities and engage with potential candidates in a more personalized manner. This top-tier package is designed to position your company as a leader in the field and maximize your impact at the job fair.</span>
+						</label>
+					</div>
+					<small class="error" id="packageError">&nbsp;</small>
+				</fieldset>
+				<fieldset id="paymentInformation">
+					<legend>Credit Card Information (required)</legend>
+					<div class="form-row">
+						<label for="cardType">Credit Card Type</label>
+						<fieldset id="cardType">
+							<div id="cardContainer">
+								<label class="cardLabel">
+									<input name="credit_card" value="American Express" type="radio" />
+									<img src="amex.png" alt="American Express">
+								</label>
+								<label class="cardLabel">
+									<input name="credit_card" value="Discover" type="radio" />
+									<img src="discover.png" alt="Discover">
+								</label>
+								<label class="cardLabel">
+									<input name="credit_card" value="Mastercard" type="radio" />
+									<img src="master.png" alt="Mastercard">
+								</label>
+								<label class="cardLabel">
+									<input name="credit_card" value="Visa" type="radio" />
+									<img src="visa.png" alt="Visa">
+								</label>
+							</div>
+							<small class="error" id="cardError">&nbsp;</small>
+						</fieldset>
+					</div>
+					<div class="form-row">
+						<label>Credit Card Number</label>
+						<div class="input-container">
+							<input type="text" inputmode="numeric" name="card_number" id="cardNumber" placeholder="####-####-####-####" />
+							<small class="error" id="cardNumberError">&nbsp;</small>
+						</div>
+					</div>
+					<div class="form-row">
+						<label>Expiration Date</label>
+						<div class="input-container">
+							<div class="form-row" style="margin-bottom: 0;">
+								<select name="expiration_month" id="expirationMonth">
+								   <option value="">--Month--</option>
+								   <option value="01">January (01)</option>
+								   <option value="02">February (02)</option>
+								   <option value="03">March (03)</option>
+								   <option value="04">April (04)</option>
+								   <option value="05">May (05)</option>
+								   <option value="06">June (06)</option>
+								   <option value="07">July (07)</option>
+								   <option value="08">August (08)</option>
+								   <option value="09">September (09)</option>
+								   <option value="10">October (10)</option>
+								   <option value="11">November (11)</option>
+								   <option value="12">December (12)</option>
+								</select>
+								<input type="text" inputmode="numeric" name="expiration_year" id="expirationYear" placeholder="####" />
+							</div>
+							<small class="error" id="expirationDateError">&nbsp;</small>
+						</div>
+						<label>Security Code</label>
+						<div class="input-container">
+							<input type="text" inputmode="numeric" name="security_code" id="securityCode" placeholder="###" />
+							<small class="error" id="securityCodeError">&nbsp;</small>
+						</div>
+					</div>
+				</fieldset>
+				
+				<button type="submit" id="submitButton">
+					<img src="submit.png"> Submit
+				</button>
+			</form>
+		</section>
+		<footer>
+			<img src="asu_fultonengineering_white.png" alt="Ira Fulton Schools of Engineering Logo">
+			<div id="social_links">
+				<a href="#"><img src="fb_logo.jpg"></a>
+				<a href="#"><img src="x_logo.jpg"></a>
+				<a href="#"><img src="instagram_logo.jpg"></a>
+				<a href="#"><img src="linkedin_logo.jpg"></a>
+				<a href="#"><img src="flickr_logo.jpg"></a>
+				<a href="#"><img src="yt_logo.jpg"></a>
+			</div>
+		</footer>
+	</body>
+</html>

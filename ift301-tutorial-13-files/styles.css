@@ -1,0 +1,275 @@
+@charset "utf-8";
+
+/* Fieldset Styles */
+
+#registration fieldset {
+	width: 100%;
+	border: none;
+}
+
+#registration legend {
+	background-color: #8c1d40;
+	color: white;
+	padding: 0.5em 1em;
+	width: 100%;
+}
+
+/* Form Row Styles */
+
+.form-row {
+	display: flex;
+	margin-bottom: 1em;
+	align-items: flex-start;
+}
+
+/* Label Styles */
+
+#registration label {
+	display: block;
+	min-width: 250px;
+	text-align: right;
+	margin-right: 1em;
+	font-weight: bold;
+	line-height: 30px;
+}
+
+#registration label[for="state"] {
+	max-width: 50px;
+	min-width: 50px;
+}
+
+#registration label[for="zip"] {
+	max-width: 160px;
+	min-width: 160px;
+}
+
+/* Input Styles */
+
+.input-container {
+	width: calc(100% - 300px);
+}
+
+#registration input {
+	display: block;
+	height: 30px;
+	width: 100%;
+	clear: right;
+	outline: none !important;
+	border: solid 1px #333;
+	border-radius: 0.3em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+
+#registration input:focus {
+	border-color: #000;
+	background-color: #ffc62733;
+}
+
+#city {
+	max-width: 200px;
+	clear: unset;
+	margin-right: 2em;
+}
+
+#state {
+	max-width: 50px;
+	clear: unset;
+	margin-right: 2em;
+}
+
+#zip {
+	max-width: 120px;
+}
+
+#registration input[type="radio"] {
+	display: none;
+}
+
+/* Package Styles */
+
+#registration label.packageLabel {
+	max-width: 100%;
+	font-weight: normal;
+	text-align: left;
+	line-height: normal;
+	margin: 0.5em 1em;
+	cursor: pointer;
+	border-radius: 0.3em;
+}
+
+#registration label.packageLabel:hover {
+	background-color: #0003;
+}
+
+#registration label.packageLabel > span {
+	border-radius: 0.3em;
+	padding: 10px;
+	display: block;
+	background-color: transparent;
+}
+
+#registration label.packageLabel > input:checked + span {
+	background-color: #ffc62799;
+}
+
+/* Credit Card Styles */
+
+label[for="cardType"] {
+	line-height: 60px !important;
+}
+
+#registration label.cardLabel {
+	display: inline-block;
+    min-width: 0;
+    line-height: normal;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#registration label.cardLabel:hover {
+	background-color: #0003;
+}
+
+#registration label.cardLabel img {
+	border-radius: 5px;
+	background-color: white;
+}
+
+#registration label.cardLabel:has(input:checked) {
+	background-color: #ffc62799;
+}
+
+fieldset#cardType {
+	width: calc(100% - 300px);
+	padding-left: 0px;
+}
+
+#expirationMonth {
+	height: 30px;
+	margin-right: 1em;
+	border-radius: 0.3em;
+	border: solid 1px #333;
+}
+
+#expirationYear {
+	width: 100px !important;
+}
+
+#securityCode {
+	max-width: 170px;
+}
+
+/* Submit Button Styles */
+
+#submitButton {
+	background-color: #8c1d40;
+	padding: 0.5em 1em;
+	width: 200px;
+	border: none;
+	border-radius: 0.3em;
+	color: white;
+	margin-left: 1em;
+	font-size: 1.2em;
+}
+
+#submitButton img {
+	max-height: 15px;
+	margin-right: 0.5em;
+}
+
+/* Validity Styles */
+
+small.error { color: red; text-transform: uppercase; }
+
+#cityStateZipError { margin-left: 265px; }
+#packageError { margin-left: 25px; }
+
+#registration input.invalid {
+	background-color: #f003;
+	border-color: red;
+}
+
+#registration input.valid {
+	background-color: #ffc62799;
+}
+
+#registration #packageContainer.invalid {
+	border: solid 1px red;
+	border-radius: 0.8em;
+}
+
+#registration #cardContainer.invalid {
+	border: solid 1px red;
+	border-radius: 0.3em;
+}
+
+#expirationMonth.invalid {
+	background-color: #f003;
+	border-color: red;
+}
+
+#expirationMonth.valid {
+	background-color: #ffc62799;
+}
+
+/* Tablet Styles */
+
+@media (max-width: 1024px) and (min-width: 768px) {
+	#state {
+		max-width: calc(100% - 590px);
+		clear: right;
+	}
+	
+	label[for="zip"] {
+		min-width: 250px !important;
+	}
+}
+
+/* Mobile Styles */
+
+@media (max-width: 767px) {
+	#registration label {
+		width: 100%;
+		text-align: left;
+	}
+	
+	#registration input {
+		width: 100%;
+	}
+	
+	#city, #state, #zip {
+		max-width: 100%;
+	}
+	
+	#registration label.packageLabel {
+		margin: 0.5em 0;
+	}
+	
+	label[for="cardType"] {
+		line-height: normal !important;
+		margin-top: 0.5em;
+	}
+	
+	fieldset#cardType {
+		width: 100%;
+	}
+	
+	#expirationMonth {
+		width: calc(50% - 1em);
+	}
+	
+	#expirationYear {
+		max-width: 50%;
+	}
+	
+	#securityCode {
+		max-width: 100%;
+	}
+	
+	#submitButton {
+		margin-left: 0;
+		width: 100%;
+	}
+}
