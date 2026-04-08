@@ -32,6 +32,28 @@ function formatPhoneNumber(phone){
   document.getElementById('contactPhone').value = formattedPhone;
 }
 
+function validatePhoneNumber(phone){
+  let tmpPhone = phone.replace(/\D/g, '');
+
+  formatPhoneNumber(phone);
+
+  if (tmpPhone.length < 10) return "too short";
+  else if (tmpPhone.length > 10) return "too long";
+
+  //first 3 chars of phone number
+  let areaCode = tmpPhone.substr(0, 3);
+  let exchangeCode = tmpPhone.substr(3, 3);
+  let stationCode = tmpPhone.substr(6, 4);
+
+  if (!areaCode.match(/^[2-9][0-8][0-9]$/)) return "invalid area code";
+
+  if (!exchangeCode.match(/^[2-9][0-9]{2}$/)) return "invalid exchange code";
+
+  if (!stationCode.match(/^[0-9]{4}$/)) return "invalid station code";
+
+  return "valid";
+}
+
 /* Predefined Functions */
 
 function isStrictMode() {
