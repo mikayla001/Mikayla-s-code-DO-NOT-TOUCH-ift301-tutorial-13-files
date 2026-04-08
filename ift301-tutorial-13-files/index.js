@@ -82,6 +82,23 @@ function validateZipCode(zip){
   return "valid";
 }
 
+function validateCityStateZip(){
+  let cityEl = document.getElementById('city');
+  let stateEl = document.getElementById('state');
+  let zipEl = document.getElementById('zip');
+
+  let cityValid;
+  if (cityEl.value.length > 0){
+    cityValid = 'valid';
+  }
+  else {
+    cityValid = 'city is required';
+  }
+
+  let stateValid;
+  
+}
+
 /* Predefined Functions */
 
 function isStrictMode() {
