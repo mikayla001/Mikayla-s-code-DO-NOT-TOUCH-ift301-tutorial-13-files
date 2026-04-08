@@ -4,7 +4,7 @@ function validateEmail(email) {
   let tmp = email.split('@');
 
   //ends functiohn if there is no @ symbol
-  if (tmp.length < 2) return "missing the @ symbol";
+  if (tmp.length < 2) return "missing @ symbol";
 
   let prefixPattern = /(?:[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")/;
 
