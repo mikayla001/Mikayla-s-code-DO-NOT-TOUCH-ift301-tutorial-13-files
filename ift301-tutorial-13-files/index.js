@@ -70,6 +70,18 @@ function validateState(state){
   return "valid";
 }
 
+function validateZipCode(zip){
+  if (zip.length === 0) return "zip code is required";
+
+  if (zip.search(/\D/) !== -1) return "enter only numbers for zip code";
+
+  if (zip.length < 5) return "zip code is too short";
+
+  if (zip.length > 5) return "zip code is too long";
+
+  return "valid";
+}
+
 /* Predefined Functions */
 
 function isStrictMode() {
