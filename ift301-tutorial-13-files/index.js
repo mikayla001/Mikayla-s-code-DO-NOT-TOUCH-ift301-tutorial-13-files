@@ -17,6 +17,10 @@ function validateEmail(email) {
   return "valid";
 }
 
+function formatPhoneNumber(){
+  
+}
+
 /* Predefined Functions */
 
 function isStrictMode() {
