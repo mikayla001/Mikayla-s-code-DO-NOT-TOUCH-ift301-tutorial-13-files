@@ -184,8 +184,9 @@ function validateCardInformation() {
   let cnValid = '';
   let ctValid = '';
   let scValid = '';
+  let cardValid = '';
 
-  if (cardType.value === '') ctValid = "please select a card type";
+  if (cardType === '') ctValid = "please select a card type";
   else ctValid = "valid";
 
   let tmpNum = cardNumberEl.value.replace(/\D/g, '');
