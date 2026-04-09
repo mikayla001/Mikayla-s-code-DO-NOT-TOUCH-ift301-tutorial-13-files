@@ -135,7 +135,7 @@ function validateCityStateZip(){
 function validatePackages(){
   let packageEls = document.querySelectorAll('.packageLabel input[type="radio"]:checked');
 
-  if (packageEls.length === 0) return "please select only one package";
+  if (packageEls.length === 0) return "please select a package";
   else if (packageEls.length > 1) return 'please select only one package';
   return "valid";
 }
