@@ -95,8 +95,13 @@ function validateCityStateZip(){
     cityValid = 'city is required';
   }
 
-  let stateValid;
-  
+  let stateValid = validateState(stateEl.value);
+
+  let zipValid = validateZipCode(zipEl.value);
+
+  if (){
+    
+  }
 }
 
 /* Predefined Functions */
