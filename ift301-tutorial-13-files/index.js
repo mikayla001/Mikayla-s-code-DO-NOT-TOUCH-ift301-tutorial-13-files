@@ -99,9 +99,37 @@ function validateCityStateZip(){
 
   let zipValid = validateZipCode(zipEl.value);
 
-  if (){
-    
+  if (cityValid === 'valid'){
+    cityEl.classList.remove('invalid');
+    cityEl.classList.add('valid');
   }
+  else {
+    cityEl.classList.remove('valid');
+    cityEl.classList.add('invalid');
+  }
+
+  if (stateValid === 'valid'){
+    stateEl.classList.remove('invalid');
+    stateEl.classList.add('valid');
+  }
+  else {
+    stateEl.classList.remove('valid');
+    stateEl.classList.add('invalid');
+  }
+
+  if (zipValid === 'valid'){
+    zipEl.classList.remove('invalid');
+    zipEl.classList.add('valid');
+  }
+  else {
+    zipEl.classList.remove('valid');
+    zipEl.classList.add('invalid');
+  }
+
+  if (cityValid !== 'valid') return  cityValid;
+  else if (stateValid !== 'valid') return stateValid;
+  else if (zipValid !== 'valid') return zipValid;
+  return "valid";
 }
 
 /* Predefined Functions */
