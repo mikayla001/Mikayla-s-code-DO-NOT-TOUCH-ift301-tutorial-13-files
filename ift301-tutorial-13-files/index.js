@@ -54,6 +54,7 @@ function validatePhoneNumber(phone){
   return "valid";
 }
 
+//idk why this is not 100
 function validateState(state){
   const states = ( 
   "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
@@ -82,6 +83,7 @@ function validateZipCode(zip){
   return "valid";
 }
 
+//idk why this is not 100
 function validateCityStateZip(){
   let cityEl = document.getElementById('city');
   let stateEl = document.getElementById('state');
@@ -166,6 +168,145 @@ function formatCardNumber(num, type = ''){
   }
 
   document.getElementById('cardNumber').value = formattedNum.join('-');
+}
+
+function validateCardInformation() {
+  let cardEl = document.getElementById('cardContainer');
+  let cardErrorEl = document.getElementById('cardError');
+  let cardNumberEl = document.getElementById('cardNumber');
+  let cardNumberErrorEl = document.getElementById('cardNumberError');
+  let scEl = document.getElementById('securityCode');
+  let scErrorEl = document.getElementById('securityCodeError');
+  
+  let cardType = getCardType();
+
+  let cardNumberType = '';
+  let cnValid = '';
+  let ctValid = '';
+  let scValid = '';
+
+  if (cardType.value === '') ctValid = "please select a card type";
+  else ctValid = "valid";
+
+  let tmpNum = cardNumberEl.value.replace(/\D/g, '');
+
+  if (tmpNum.length === 0) {
+    cnValid = 'enter a valid card number';
+    formatCardNumber(tmpNum, '');
+  } else {
+  if (/^4[0-9]{6,}$/.test(tmpNum)) {
+    cardNumberType = 'Visa';
+    formatCardNumber(tmpNum, 'Visa');
+  } else if (/^6(?:011|5[0-9]{2})[0-9]{3,}$/.test(tmpNum)) {
+    cardNumberType = 'Discover';
+    formatCardNumber(tmpNum, 'Discover');
+  } else if (/^3[47][0-9]{5,}$/.test(tmpNum)) {
+    cardNumberType = 'American Express';
+    formatCardNumber(tmpNum, 'American Express');
+  } else if (/^5[1-5][0-9]{5,}|222[1-9][0-9]{3,}|22[3-9][0-9]{4,}|2[3-6][0-9]{5,}|27[01][0-9]{4,}|2720[0-9]{3,}$/.test(tmpNum)) {
+    cardNumberType = 'Mastercard';
+    formatCardNumber(tmpNum, 'Mastercard');
+  }
+  
+  let cEls = document.querySelectorAll('.cardLabel input[type="radio"]');
+  for (let i = 0; i < cEls.length; i++) {
+    if (cardNumberType !== '' && cEls[i].value === cardNumberType) {
+      cEls[i].checked = true;
+    } else {
+      cEls[i].checked = false;
+    }
+  }
+  
+  if (cardNumberType !== '' && checkLuhn(tmpNum) === true) {
+    if (cardNumberType !== 'American Express' && tmpNum.length === 16) {
+      cnValid = 'valid';
+    } else if (cardNumberType === 'American Express' && tmpNum.length === 15) {
+      cnValid = 'valid';
+    } else {
+      cnValid = 'invalid card number';
+    }
+  } else {
+    cnValid = 'invalid card number';
+  }
+  }
+  
+  cardType = getCardType();
+  
+  if (cardType === '') {
+    ctValid = 'please select a card type';
+  } else if (cardNumberType === '') {
+    ctValid = 'card type not accepted';
+  } else if (cardType !== cardNumberType) {
+    ctValid = 'card type and number do not match';
+  } else {
+    ctValid = 'valid';
+  }
+  
+  if (ctValid !== 'valid' && cardValid === 'valid' && cnValid === 'valid') {
+    cardErrorEl.innerHTML = ctValid;
+    cardNumberErrorEl.innerHTML = ctValid;
+    cardEl.classList.remove('valid');
+    cardNumberEl.classList.remove('valid');
+    cardEl.classList.add('invalid');
+    cardNumberEl.classList.add('invalid');
+  } else {
+    if (cardValid !== 'valid') {
+      cardErrorEl.innerHTML = cardValid;
+      cardEl.classList.remove('valid');
+      cardEl.classList.add('invalid');
+    } else {
+      cardErrorEl.innerHTML = '&nbsp;';
+      cardEl.classList.remove('invalid');
+      cardEl.classList.add('valid');
+    }
+    
+    if (cnValid !== 'valid') {
+      cardNumberErrorEl.innerHTML = cnValid;
+      cardNumberEl.classList.remove('valid');
+      cardNumberEl.classList.add('invalid');
+    } else {
+      cardNumberErrorEl.innerHTML = '&nbsp;';
+      cardNumberEl.classList.remove('invalid');
+      cardNumberEl.classList.add('valid');
+    }
+  }
+  
+  let code = scEl.value;
+  
+  if (/\D/.test(code)) {
+    scValid = 'invalid';
+  } else if (cardType !== '') {
+    if (cardType === 'American Express') {
+      if (code.length < 4) {
+        scValid = 'too short';
+      } else if (code.length > 4) {
+        scValid = 'too long';
+      } else {
+        scValid = 'valid';
+      }
+    } else {
+      if (code.length < 3) {
+        scValid = 'too short';
+      } else if (code.length > 3) {
+        scValid = 'too long';
+      } else {
+        scValid = 'valid';
+      }
+    }
+  } else {
+    scValid = 'required';
+  }
+  
+  if (scValid === 'valid') {
+    scErrorEl.innerHTML = '&nbsp;';
+    scEl.classList.remove('invalid');
+    scEl.classList.add('valid');
+  } else {
+    scErrorEl.innerHTML = scValid;
+    scEl.classList.remove('valid');
+    scEl.classList.add('invalid');
+  }
+
 }
 
 /* Predefined Functions */
