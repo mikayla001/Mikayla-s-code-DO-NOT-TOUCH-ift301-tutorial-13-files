@@ -132,6 +132,42 @@ function validateCityStateZip(){
   return "valid";
 }
 
+function validatePackages(){
+  let packageEls = document.querySelectorAll('.packageLabel input[type="radio"]:checked');
+
+  if (packageEls.length === 0) return "please select only one package";
+
+  return "valid";
+}
+
+function getCardType(){
+  let cardEls = document.querySelectorAll('.cardLabel input[type="radio"]:checked');
+
+  if (cardEls.length === 0) return "";
+  return cardEls[0].value;
+}
+
+function formatCardNumber(num, type = ''){
+  let tmpNumber = num.replace(/\D/g, '');
+  tmpNumber = tmpNumber.slice(0, 17);
+
+  let formattedNum = [];
+
+  if (tmpNumber.length > 0) {
+    formattedNum.push(tmpNumber.substr(0, 4))};
+  if (type !== 'American Express') {
+    if (tmpNumber.length > 4) formattedNum.push(tmpNumber.substr(4, 4));
+    if (tmpNumber.length > 8) formattedNum.push(tmpNumber.substr(8, 4));
+    if (tmpNumber.length > 12) formattedNum.push(tmpNumber.substr(12, 4));
+  }
+  else {
+    if (tmpNumber.length > 4) formattedNum.push(tmpNumber.substr(4, 6));
+    if (tmpNumber.length > 10) formattedNum.push(tmpNumber.substr(10, 5));
+  }
+
+  document.getElementById('cardNumber').value = formattedNum.join('-');
+}
+
 /* Predefined Functions */
 
 function isStrictMode() {
