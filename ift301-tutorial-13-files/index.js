@@ -315,6 +315,42 @@ function validateCardInformation() {
 
 }
 
+function validateExpirationDate () {
+  let emEl = document.getElementById('expirationMonth');
+  let eyEl = document.getElementById('expirationYear');
+  
+  let m = emEl.options[emEl.selectedIndex].value;
+  let y = eyEl.value;
+  
+  let isValid = '';
+  
+  if (m === '') {
+    isValid = 'select a month';
+  } 
+  else if (y === '') {
+    isValid = 'enter a year';
+  } 
+  else {
+    if (!/^\d{4}$/.test(y)) {
+      isValid = 'enter a valid year';
+    } 
+    else {
+      let month = parseInt(m);
+      let year = parseInt(y);
+      let d = new Date(year, month - 1);
+      let thisMonth = new Date().getMonth();
+      let thisYear = new Date().getFullYear();
+      let t = new Date(thisYear, thisMonth);
+      
+      if (d < t) {
+        isValid = 'card is expired';
+      } else {
+        isValid = 'valid';
+      }
+    }
+  }
+}
+
 /* Predefined Functions */
 
 function isStrictMode() {
