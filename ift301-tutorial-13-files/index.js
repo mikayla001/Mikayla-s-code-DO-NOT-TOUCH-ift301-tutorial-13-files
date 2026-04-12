@@ -529,6 +529,17 @@ function initializeForm(){
  document.getElementById("registration").addEventListener("submit", validateForm, false);
 }
 
+//event listeners step 19
+window.addEventListener("load", function(){
+  initializeForm();
+  detectMobile();
+});
+
+window.addEventListener("resize", function(){
+  initializeForm();
+  detectMobile();
+});
+
 /* Predefined Functions */
 
 function isStrictMode() {
