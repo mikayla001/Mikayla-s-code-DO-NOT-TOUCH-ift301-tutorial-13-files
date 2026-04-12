@@ -451,9 +451,17 @@ function validateField(el){
     if (isValid === "valid") errorEl.innerHTML = "&nbsp;";
     else errorEl.innerHTML = isValid;
   }
+}
 
-  
+let isMobile = false;
 
+function detectMobile(){
+  let el = document.getElementById("cityError")
+
+  let style = window.getComputedStyle(el)
+
+  if (style.display === "none") isMobile = false;
+  else isMobile = true;
 }
 
 /* Predefined Functions */
