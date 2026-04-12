@@ -453,6 +453,7 @@ function validateField(el){
   }
 }
 
+// global var
 let isMobile = false;
 
 function detectMobile(){
@@ -462,6 +463,33 @@ function detectMobile(){
 
   if (style.display === "none") isMobile = false;
   else isMobile = true;
+}
+
+let requiredFields = ["companyName",
+  "contactPerson",
+  "contactEmail",
+  "contactPhone",
+  "streetAddress",
+  "zip",
+  "state",
+  "city",
+  "packageContainer",
+  "cardContainer",
+  "cardNumber",
+  "expirationMonth",
+  "expirationYear",
+  "securityCode"];
+
+function validateForm(e){
+  e.preventDefault();
+
+  let submitOK = true;
+
+  for (let i = 0; i < requiredFields.length; i++) {
+    const el = document.getElementById(requiredFields[i]);
+    if (el.classList.contains("invalid")) submitOK = false;
+  }
+  if (submitOK === true) document.getElementById("registration").submit();
 }
 
 /* Predefined Functions */
