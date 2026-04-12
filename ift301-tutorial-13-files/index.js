@@ -351,6 +351,111 @@ function validateExpirationDate () {
   }
 }
 
+function validateField(el){
+  let isValid  = null;
+  let errorEl = null;
+  let addClass = true;
+  let showError = true;
+
+  switch (el.id){ 
+    case "contactEmail":
+      isValid = validateEmail(el.value);
+      errorEl  = document.getElementById("contactEmailError");
+      break;
+
+    case "contactPhone":
+      isValid = validatePhoneNumber(el.value);
+      errorEl = document.getElementById("contactPhoneError");
+      break;
+
+    case "state":
+    case "city":
+    case "zip":
+      if (isMobile === false){
+        addClass = false;
+        errorEl = document.getElementById("cityStateZipError");
+        isValid = validateCityStateZip();
+      }
+
+      if (isMobile === true){
+        if (el.id.value === 'city'){
+          errorEl = document.getElementById("cityError");
+
+          if (el.value != '') isValid = "valid";
+          else isValid = "city is required";
+        }
+
+        if (el.id.value === 'state'){
+          errorEl = document.getElementById("stateError");
+          isValid = validateState(el);
+        }
+
+        if (el.id.value === 'zip'){
+          errorEl = document.getElementById("zipError");
+          isValid = validateZipCode(el);
+        }
+      }
+      break;
+      
+    case "companyName":
+    case "contactPerson":
+    case "streetAddress":
+      if (el.value != '') isValid = "valid";
+      else isValid = "required";
+
+      switch (el.id) {
+        case "companyName":
+          errorEl = document.getElementById("companyNameError");
+          break;
+        case "contactPerson":
+          errorEl = document.getElementById("contactPersonError");
+          break;
+        case "streetAddress":
+          errorEl = document.getElementById("streetAddressError");
+          break;
+      }
+      break;
+
+      case "cardNumber":
+      case "cardContainer":
+      case "securityCode":
+        showError = false;
+        addClass = false;
+        validateCardInformation();
+        break;
+      
+    case "expirationMonth":
+    case "expirationYear":
+      addClass = false;
+      errorEl = document.getElementById("expirationDateError");
+      isValid = validateExpirationDate();
+      break;
+    
+    case "packageContainer":
+      isValid = validatePackages();
+      errorEl = document.getElementById("packageError");
+  }
+
+  if (addClass === true){
+    if (isValid = "valid") {
+      el.classList.remove("invalid");
+      el.classList.add("valid")
+    }
+    else {
+      el.classList.remove("valid");
+      el.classList.add("invalid")
+    }
+  }
+
+  if (showError){
+    if (isValid === "valid") errorEl.innerHTML = "&nbsp;";
+    else errorEl.innerHTML = isValid;
+  }
+
+  
+
+}
+
 /* Predefined Functions */
 
 function isStrictMode() {
