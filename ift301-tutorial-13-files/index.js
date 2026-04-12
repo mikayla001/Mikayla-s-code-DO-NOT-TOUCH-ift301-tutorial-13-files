@@ -492,6 +492,43 @@ function validateForm(e){
   if (submitOK === true) document.getElementById("registration").submit();
 }
 
+function initializeForm(){
+  for (let i = 0; i < requiredFields.length; i++){
+    const el = document.getElementById(requiredFields[i]);
+
+    validateField(el);
+
+    if (el.tagName.toLowerCase() === "input") {
+      el.addEventListener("input", function() {
+        validateField(this);
+      });
+    }
+
+    else if (el.tagName === "select"){
+      el.addEventListener("change", function(){
+        validateField(this);
+      });
+    }
+  } //end of for loop
+
+  let els = document.querySelectorAll("packageLabel");
+  for (let i = 0; i < els.length; i++){
+    els[i].addEventListener("click", function() {
+        validateField(document.getElementById("packageContainer"));
+    });
+  }
+
+  els = document.querySelectorAll("cardLabel");
+  for (let i = 0; i < els.length; i++) {
+    els[i].addEventListener("click", function() {
+      validateField(document.getElementById("cardContainer"));
+    });
+  }
+
+
+ document.getElementById("registration").addEventListener("submit", validateForm, false);
+}
+
 /* Predefined Functions */
 
 function isStrictMode() {
