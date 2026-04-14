@@ -378,19 +378,19 @@ function validateField(el){
       }
 
       if (isMobile === true){
-        if (el.id.value === 'city'){
+        if (el.id === 'city'){
           errorEl = document.getElementById("cityError");
 
           if (el.value != '') isValid = "valid";
           else isValid = "city is required";
         }
 
-        if (el.id.value === 'state'){
+        if (el.id === 'state'){
           errorEl = document.getElementById("stateError");
           isValid = validateState(el);
         }
 
-        if (el.id.value === 'zip'){
+        if (el.id === 'zip'){
           errorEl = document.getElementById("zipError");
           isValid = validateZipCode(el);
         }
@@ -437,7 +437,7 @@ function validateField(el){
   }
 
   if (addClass === true){
-    if (isValid = "valid") {
+    if (isValid === "valid") {
       el.classList.remove("invalid");
       el.classList.add("valid")
     }
@@ -465,7 +465,7 @@ function detectMobile(){
   else isMobile = true;
 }
 
-let requiredFields = ["companyName",
+let requiredFields = ("companyName",
   "contactPerson",
   "contactEmail",
   "contactPhone",
@@ -478,7 +478,7 @@ let requiredFields = ["companyName",
   "cardNumber",
   "expirationMonth",
   "expirationYear",
-  "securityCode"];
+  "securityCode");
 
 function validateForm(e){
   e.preventDefault();
