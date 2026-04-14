@@ -1,4 +1,5 @@
 "use strict";
+let isMobile = false;
 
 function validateEmail(email) {
   let tmp = email.split('@');
@@ -453,9 +454,6 @@ function validateField(el){
   }
 }
 
-// global var
-let isMobile = false;
-
 function detectMobile(){
   let el = document.getElementById("cityError")
 
@@ -538,7 +536,7 @@ window.addEventListener("load", function(){
 window.addEventListener("resize", function(){
   initializeForm();
   detectMobile();
-});
+}); 
 
 /* Predefined Functions */
 
