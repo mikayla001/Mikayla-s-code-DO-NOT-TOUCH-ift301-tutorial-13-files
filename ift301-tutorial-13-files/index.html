@@ -6,7 +6,6 @@
 		<title>IFT Job Fair Registration</title>
 		<link rel="stylesheet" href="layout.css">
 		<link rel="stylesheet" href="styles.css">
-		<script src="index.js" defer></script>
 	</head>
 	<body>
 		<header>
@@ -28,7 +27,7 @@
 			<p>The Arizona State University Information Technology (IFT) Program is thrilled to invite you to showcase your organization's opportunities and connect with our talented students at our upcoming event. This is a prime opportunity for your company to engage with the brightest minds in the field of information technology, as our program at ASU has a reputation for producing skilled and innovative professionals. To secure your spot as an exhibitor, please complete the registration form below. Thank you for your participation in making this event a success, and we look forward to welcoming you to the ASU IFT Program Job Fair!</p>
 		</section>
 		<section>
-			<form method="post" action="https://iftweb.eng.asu.edu/ift301/tutorials/13/submit.php" id="registration">
+			<form method="post" action="https://iftweb.eng.asu.edu/ift301/tutorials/submit.php" id="registration">
 				<fieldset id="companyInformation">
 					<legend>Company Information (required)</legend>
 					<div class="form-row">
@@ -74,63 +73,72 @@
 					</div>
 					<div class="form-row" style="margin-bottom: 0;">
 						<label>City</label>
-						<input type="text" name="city" id="city" placeholder="City" />
+						<div class="input-container" id="cityContainer">
+							<input type="text" name="city" id="city" placeholder="City" />
+							<small class="error" id="cityError">&nbsp;</small>
+						</div>
 						<label for="state">State</label>
-						<input type="text" name="state" id="state" list="stateList" placeholder="AZ" />
-						<datalist id="stateList">
-						   <option value="AL" />
-						   <option value="AK" />
-						   <option value="AZ" />
-						   <option value="AR" />
-						   <option value="CA" />
-						   <option value="CO" />
-						   <option value="CT" />
-						   <option value="DE" />
-						   <option value="FL" />
-						   <option value="GA" />
-						   <option value="HI" />
-						   <option value="ID" />
-						   <option value="IL" />
-						   <option value="IN" />
-						   <option value="IA" />
-						   <option value="KS" />
-						   <option value="KY" />
-						   <option value="LA" />
-						   <option value="ME" />
-						   <option value="MD" />
-						   <option value="MA" />
-						   <option value="MI" />
-						   <option value="MN" />
-						   <option value="MS" />
-						   <option value="MO" />
-						   <option value="MT" />
-						   <option value="NE" />
-						   <option value="NV" />
-						   <option value="NH" />
-						   <option value="NJ" />
-						   <option value="NM" />
-						   <option value="NY" />
-						   <option value="NC" />
-						   <option value="ND" />
-						   <option value="OH" />
-						   <option value="OK" />
-						   <option value="OR" />
-						   <option value="PA" />
-						   <option value="RI" />
-						   <option value="SC" />
-						   <option value="SD" />
-						   <option value="TN" />
-						   <option value="TX" />
-						   <option value="UT" />
-						   <option value="VT" />
-						   <option value="VA" />
-						   <option value="WA" />
-						   <option value="WV" />
-						   <option value="WI" />
-						   <option value="WY" />
-						</datalist>
+						<div class="input-container" id="stateContainer">
+							<input type="text" name="state" id="state" list="stateList" placeholder="AZ" />
+							<datalist id="stateList">
+							   <option value="AL" />
+							   <option value="AK" />
+							   <option value="AZ" />
+							   <option value="AR" />
+							   <option value="CA" />
+							   <option value="CO" />
+							   <option value="CT" />
+							   <option value="DE" />
+							   <option value="FL" />
+							   <option value="GA" />
+							   <option value="HI" />
+							   <option value="ID" />
+							   <option value="IL" />
+							   <option value="IN" />
+							   <option value="IA" />
+							   <option value="KS" />
+							   <option value="KY" />
+							   <option value="LA" />
+							   <option value="ME" />
+							   <option value="MD" />
+							   <option value="MA" />
+							   <option value="MI" />
+							   <option value="MN" />
+							   <option value="MS" />
+							   <option value="MO" />
+							   <option value="MT" />
+							   <option value="NE" />
+							   <option value="NV" />
+							   <option value="NH" />
+							   <option value="NJ" />
+							   <option value="NM" />
+							   <option value="NY" />
+							   <option value="NC" />
+							   <option value="ND" />
+							   <option value="OH" />
+							   <option value="OK" />
+							   <option value="OR" />
+							   <option value="PA" />
+							   <option value="RI" />
+							   <option value="SC" />
+							   <option value="SD" />
+							   <option value="TN" />
+							   <option value="TX" />
+							   <option value="UT" />
+							   <option value="VT" />
+							   <option value="VA" />
+							   <option value="WA" />
+							   <option value="WV" />
+							   <option value="WI" />
+							   <option value="WY" />
+							</datalist>
+							<small class="error" id="stateError">&nbsp;</small>
+						</div>
 						<label for="zip">ZIP / Postal Code</label>
-						<input type="text" inputmode="numeric" name="zip" id="zip" placeholder="#####" />
+						<div class="input-container" id="zipContainer">
+							<input type="text" inputmode="numeric" name="zip" id="zip" placeholder="#####" />
+							<small class="error" id="zipError">&nbsp;</small>
+						</div>
 					</div>
 					<small class="error" id="cityStateZipError">&nbsp;</small>
 				</fieldset>
